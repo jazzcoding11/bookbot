@@ -12,7 +12,15 @@ def main():
                 char_count[lower_char] += 1
             else:
                 char_count[lower_char] = 1
-    print(char_count)
+    
+    report_list = []
+    for char, count in char_count.items():
+        report_dict = {'char': char, 'count': count}
+        report_list.append(report_dict)
+    def count_value(dict_item):
+        return dict_item['count']
+    report_list.sort(reverse = True, key = count_value)
+    print(report_list)
 
 def get_num_words(text):
     words = text.split()
@@ -21,5 +29,6 @@ def get_num_words(text):
 def get_book_text(path):
     with open(path) as f:
         return f.read()
+
 
 main()
